@@ -2,12 +2,15 @@ package com.creatshare.answerapi.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.creatshare.answerapi.dao.QuestionMapper;
 import com.creatshare.answerapi.dao.UserInfoMapper;
 import com.creatshare.answerapi.pojo.Question;
 import com.creatshare.answerapi.pojo.UserInfo;
 import com.creatshare.answerapi.pojo.UserInfoExample;
 import com.creatshare.answerapi.pojo.UserPaper;
 import com.creatshare.answerapi.service.impt.UserInfoServiceImpt;
+import com.creatshare.answerapi.util.ParseXML;
+import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,9 @@ public class UserInfoService implements UserInfoServiceImpt {
 
     @Autowired
     UserInfoMapper userInfoMapper;
+
+    @Autowired
+    QuestionMapper questionMapper;
 
     @Autowired
     QuestionService questionService;
@@ -97,4 +103,19 @@ public class UserInfoService implements UserInfoServiceImpt {
         return null;
 
     }
+
+//    @Override
+//    public UserInfo rightChioceNum(UserInfo userInfo) {
+//
+//        String xml = userInfo.getUserAnswer();
+//
+//        try {
+//            ParseXML.parseXmlString(xml,"1");
+//            ParseXML.parseXmlString(xml,"2");
+//            ParseXML.parseXmlString(xml,"3");
+//        } catch (DocumentException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

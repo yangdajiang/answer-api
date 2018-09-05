@@ -314,7 +314,7 @@
 
   <!--add mapper-->
   <select id="randomSelect" resultMap="ResultMapWithBLOBs">
-        select qu_type,qu_content from question
+        select qu_id,qu_type,qu_content from question
           where qu_type=#{typeId,jdbcType=INTEGER} order by RAND(#{userNum,jdbcType=VARCHAR}) limit 0,#{num,jdbcType=INTEGER}
   </select>
 
