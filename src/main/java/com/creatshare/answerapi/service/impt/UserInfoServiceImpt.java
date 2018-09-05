@@ -15,5 +15,6 @@ public interface UserInfoServiceImpt {
     List<UserInfo> selectUserInfoByResult(int userResult);
     List<UserInfo> selectUserInfoByNum(String userNum);
     UserPaper selectUserPapById(int id);
+    UserInfo getRightChoiceNum(UserInfo userInfo);
 
 }

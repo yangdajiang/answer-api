@@ -7,6 +7,7 @@ import com.creatshare.answerapi.util.ResultCode;
 import com.creatshare.answerapi.util.ResultData;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,12 @@ public class UserInfoController {
     UserInfoService userInfoService;
 
     @PostMapping(value = "/insert")
-    public ResultData insert(@RequestBody UserInfo userInfo){
+    public ResultData insert(@RequestBody UserInfo userInfo) throws DocumentException {
+
+        userInfo = userInfoService.getRightChoiceNum(userInfo);
+
+        System.out.println(userInfo.getUserChoice());
+
         int flag =
                 userInfoService.insertUserInfo(userInfo);
         if(flag!=0) return new ResultData(ResultCode.SUCCESS);

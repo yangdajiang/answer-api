@@ -9,8 +9,10 @@ import com.creatshare.answerapi.pojo.UserInfo;
 import com.creatshare.answerapi.pojo.UserInfoExample;
 import com.creatshare.answerapi.pojo.UserPaper;
 import com.creatshare.answerapi.service.impt.UserInfoServiceImpt;
-import com.creatshare.answerapi.util.ParseXML;
+import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -104,18 +106,40 @@ public class UserInfoService implements UserInfoServiceImpt {
 
     }
 
-//    @Override
-//    public UserInfo rightChioceNum(UserInfo userInfo) {
-//
-//        String xml = userInfo.getUserAnswer();
-//
-//        try {
-//            ParseXML.parseXmlString(xml,"1");
-//            ParseXML.parseXmlString(xml,"2");
-//            ParseXML.parseXmlString(xml,"3");
-//        } catch (DocumentException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    @Override
+    public UserInfo getRightChoiceNum(UserInfo userInfo) {
+
+        String xml = userInfo.getUserAnswer();
+
+        Document doc = null;
+
+        try {
+            doc = DocumentHelper.parseText(xml);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+
+        Element result = doc.getRootElement();
+        List<Element> elements = result.elements();
+
+        for (Element e:elements
+                ) {
+
+            String quType = e.element("quType").getText();
+
+            if (quType.equals("2")||quType.equals("3")||quType.equals("4")||
+                    quType.equals("5")||quType.equals("6")){
+
+                int quId = Integer.parseInt(e.element("quId").getText());
+                //System.out.println(quId);
+                String quAnswer = e.element("quAnswer").getText();
+                String rightAnswer = questionMapper.selectByPrimaryKey(quId).getQuAnswer();
+                //System.out.println(quAnswer + " " + rightAnswer);
+                int userChoice = userInfo.getUserChoice();
+                if(quAnswer.equals(rightAnswer)) userInfo.setUserChoice(userChoice+1);
+
+            }
+        }
+        return userInfo;
+    }
 }
