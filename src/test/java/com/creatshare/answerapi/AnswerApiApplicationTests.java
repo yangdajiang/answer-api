@@ -9,8 +9,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AnswerApiApplicationTests {
 
+    public static int test = 10;
+
+
     @Test
     public void contextLoads() {
+
+        System.out.println(test);
+        test = 20;
+        System.out.println(test);
+        System.out.println(test);
+
     }
 
 }

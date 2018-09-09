@@ -18,6 +18,12 @@ import java.util.TimeZone;
 @Service
 public class QuestionService implements QuestionServiceImpt {
 
+//    public static int year = 2018;
+//    public static int month = 2;
+//    public static int day = 14;
+//    public static int hour = 2;
+//    public static int minute = 0;
+
     @Autowired
     QuestionMapper questionMapper;
 
@@ -63,6 +69,7 @@ public class QuestionService implements QuestionServiceImpt {
     public List<Question> randomSelectQues(String direction,String userNum) {
 
         Calendar newTime = Calendar.getInstance();
+        //Calendar startTime =
         Calendar startTime = new GetCard().getCardByDirection(direction);
 
         if(newTime.after(startTime)){

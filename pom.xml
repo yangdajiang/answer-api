@@ -108,7 +108,7 @@
             <version>1.6.1</version>
         </dependency>
 
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/javax/javaee-api &ndash;&gt;-->
+        <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
         <!--<dependency>-->
             <!--<groupId>javax</groupId>-->
             <!--<artifactId>javaee-api</artifactId>-->
