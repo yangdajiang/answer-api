@@ -1,5 +1,6 @@
 package com.creatshare.answerapi.util;
 
+import com.creatshare.answerapi.enums.CardEnum;
 import com.creatshare.answerapi.pojo.Card;
 
 import java.util.ArrayList;

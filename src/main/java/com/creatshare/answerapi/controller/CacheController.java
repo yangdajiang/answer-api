@@ -1,7 +1,7 @@
 package com.creatshare.answerapi.controller;
 
 import com.creatshare.answerapi.service.CacheService;
-import com.creatshare.answerapi.util.ResultCode;
+import com.creatshare.answerapi.enums.ResultCodeEnum;
 import com.creatshare.answerapi.util.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +20,7 @@ public class CacheController {
                                @RequestParam String subNum,
                                @RequestParam String subContent){
         cacheService.subCache(userNum,subNum,subContent);
-        return new ResultData(ResultCode.SUCCESS);
+        return new ResultData(ResultCodeEnum.SUCCESS);
     }
 
     @RequestMapping(value = "/getCache")

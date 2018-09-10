@@ -1,12 +1,11 @@
 package com.creatshare.answerapi.service;
 
 import com.creatshare.answerapi.dao.QuestionMapper;
+import com.creatshare.answerapi.enums.QuestionTypeEnum;
 import com.creatshare.answerapi.pojo.Question;
 import com.creatshare.answerapi.pojo.QuestionExample;
 import com.creatshare.answerapi.service.impt.QuestionServiceImpt;
 import com.creatshare.answerapi.util.GetCard;
-import com.creatshare.answerapi.util.InitTime;
-import com.creatshare.answerapi.util.QuestionType;
 import com.creatshare.answerapi.util.SelectQuestionDire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,7 +74,7 @@ public class QuestionService implements QuestionServiceImpt {
         if(newTime.after(startTime)){
             SelectQuestionDire selectQuestionDire = new SelectQuestionDire();
 
-            QuestionType questionType =
+            QuestionTypeEnum questionType =
                     selectQuestionDire.returnDire(direction);
 
             List<Question> list =

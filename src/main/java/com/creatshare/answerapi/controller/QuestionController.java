@@ -1,8 +1,8 @@
 package com.creatshare.answerapi.controller;
 
+import com.creatshare.answerapi.enums.ResultCodeEnum;
 import com.creatshare.answerapi.pojo.Question;
 import com.creatshare.answerapi.service.QuestionService;
-import com.creatshare.answerapi.util.ResultCode;
 import com.creatshare.answerapi.util.ResultData;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -24,9 +24,9 @@ public class QuestionController {
         int flag =
                 questionService.insertQues(question);
         if(flag==0){
-            return new ResultData(ResultCode.WARN);
+            return new ResultData(ResultCodeEnum.WARN);
         }
-        return new ResultData(ResultCode.SUCCESS);
+        return new ResultData(ResultCodeEnum.SUCCESS);
     }
 
     @PostMapping(value = "/delete")
@@ -35,9 +35,9 @@ public class QuestionController {
         int flag =
                 questionService.deleteQues(quId);
 
-        if(flag==0) return new ResultData(ResultCode.WARN);
+        if(flag==0) return new ResultData(ResultCodeEnum.WARN);
 
-        return new ResultData(ResultCode.SUCCESS);
+        return new ResultData(ResultCodeEnum.SUCCESS);
     }
 
     @PostMapping(value = "/update")
@@ -45,9 +45,9 @@ public class QuestionController {
 
         int flag =
                 questionService.updateQues(question);
-        if(flag==0) return new ResultData(ResultCode.WARN);
+        if(flag==0) return new ResultData(ResultCodeEnum.WARN);
 
-        return new ResultData(ResultCode.SUCCESS);
+        return new ResultData(ResultCodeEnum.SUCCESS);
     }
 
     @RequestMapping(value = "")
@@ -55,7 +55,7 @@ public class QuestionController {
         PageHelper.startPage(page,size);
         List<Question> list = questionService.selectAllQues();
         PageInfo<Question> pageInfo = new PageInfo<>(list);
-        return new ResultData(ResultCode.SUCCESS,pageInfo);
+        return new ResultData(ResultCodeEnum.SUCCESS,pageInfo);
     }
 
     @RequestMapping(value = "/id/{quId}")
@@ -63,28 +63,28 @@ public class QuestionController {
         Question question =
                 questionService.selectQuesById(quId);
         if(question==null)
-            return new ResultData(ResultCode.WARN);
-        return new ResultData(ResultCode.SUCCESS,question);
+            return new ResultData(ResultCodeEnum.WARN);
+        return new ResultData(ResultCodeEnum.SUCCESS,question);
     }
 
     @RequestMapping(value = "/selectByType")
     public ResultData selectQuesByType(@RequestParam int quType,@RequestParam int page,@RequestParam int size){
 
-        if(quType>12||quType<1) return new ResultData(ResultCode.WARN);
+        if(quType>12||quType<1) return new ResultData(ResultCodeEnum.WARN);
 
         PageHelper.startPage(page,size);
         List<Question> list =
                 questionService.selectQuesByType(quType);
         PageInfo<Question> pageInfo = new PageInfo<>(list);
-        return new ResultData(ResultCode.SUCCESS,pageInfo);
+        return new ResultData(ResultCodeEnum.SUCCESS,pageInfo);
     }
 
     @PostMapping(value = "/getRandomPap")
     public ResultData randomSelectQues(@RequestParam String direction,@RequestParam String userNum){
         List<Question> list =
                 questionService.randomSelectQues(direction,userNum);
-        if(list!=null) return new ResultData(ResultCode.SUCCESS,list);
-        return new ResultData(ResultCode.WARN,"时间未到或查询错误");
+        if(list!=null) return new ResultData(ResultCodeEnum.SUCCESS,list);
+        return new ResultData(ResultCodeEnum.WARN,"时间未到或查询错误");
     }
 
 }

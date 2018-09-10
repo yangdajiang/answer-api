@@ -1,6 +1,6 @@
 package com.creatshare.answerapi.pojo;
 
-import com.creatshare.answerapi.util.CardEnum;
+import com.creatshare.answerapi.enums.CardEnum;
 import com.creatshare.answerapi.util.InitTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

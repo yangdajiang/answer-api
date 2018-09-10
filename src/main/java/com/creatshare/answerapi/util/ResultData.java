@@ -1,5 +1,6 @@
 package com.creatshare.answerapi.util;
 
+import com.creatshare.answerapi.enums.ResultCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -9,13 +10,13 @@ public class ResultData {
     private String msg;
     private Object object;
 
-    public ResultData(ResultCode resultCode){
-        this.code = resultCode.getCode();
-        this.msg = resultCode.getMsg();
+    public ResultData(ResultCodeEnum ResultCodeEnum){
+        this.code = ResultCodeEnum.getCode();
+        this.msg = ResultCodeEnum.getMsg();
     }
 
-    public ResultData(ResultCode resultCode,Object object){
-        this(resultCode);
+    public ResultData(ResultCodeEnum ResultCodeEnum,Object object){
+        this(ResultCodeEnum);
         this.object = object;
     }
 

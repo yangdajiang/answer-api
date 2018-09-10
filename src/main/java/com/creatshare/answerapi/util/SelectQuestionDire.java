@@ -1,15 +1,17 @@
 package com.creatshare.answerapi.util;
 
 
+import com.creatshare.answerapi.enums.QuestionTypeEnum;
+
 public class SelectQuestionDire {
 
-    public QuestionType returnDire(String direction){
+    public QuestionTypeEnum returnDire(String direction){
         switch (direction){
-            case "后端": return QuestionType.SERVICE;
-            case "前端": return QuestionType.FRONT;
-            case "产品": return QuestionType.PRODUCT;
-            case "视觉": return QuestionType.VISION;
-            case "运营": return QuestionType.OPERATE;
+            case "后端": return QuestionTypeEnum.SERVICE;
+            case "前端": return QuestionTypeEnum.FRONT;
+            case "产品": return QuestionTypeEnum.PRODUCT;
+            case "视觉": return QuestionTypeEnum.VISION;
+            case "运营": return QuestionTypeEnum.OPERATE;
         }
         return null;
     }

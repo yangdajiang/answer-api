@@ -1,6 +1,6 @@
-package com.creatshare.answerapi.util;
+package com.creatshare.answerapi.enums;
 
-public enum QuestionType {
+public enum QuestionTypeEnum {
 
     SERVICE(1,3,8,12),
     FRONT(1,2,7,12),
@@ -13,14 +13,14 @@ public enum QuestionType {
     private int answer;
     private int program;
 
-    QuestionType(int base, int choice, int answer, int program) {
+    QuestionTypeEnum(int base, int choice, int answer, int program) {
         this.base = base;
         this.choice = choice;
         this.answer = answer;
         this.program = program;
     }
 
-    QuestionType(int base, int choice,int answer){
+    QuestionTypeEnum(int base, int choice, int answer){
         this.base = base;
         this.choice = choice;
         this.answer = answer;
